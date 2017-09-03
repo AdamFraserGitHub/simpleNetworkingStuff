@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/superSimpleClientServer/SuperSimpleServer/nbproject/private/
+/superSimpleClientServer/SimpleClient/nbproject/private/
+/superSimpleClientServer/JavaFXApplication2/nbproject/private/
+/superSimpleClientServer/SimpleClient/build/
