@@ -12,18 +12,30 @@ import javax.swing.DefaultListModel;
  * @author GeekG
  */
 public class UI extends javax.swing.JFrame {
-
+    private ServerInterface serverInterface;
+    private DataHandler dataHandler;
+    private String userInputItterStr, userTextInput;
+    private int userItterationsInputInt;
     /**
      * Creates new form UI
      */
     public UI() {
         initComponents();
+        
         this.setTitle("Simple Client");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         DefaultListModel model = new DefaultListModel();
         lst_diolouge.setModel(model);
         
+    }
+    
+    public void setServerInterface(ServerInterface serverInterface) {
+        this.serverInterface = serverInterface;
+    }
+    
+    public void setDataHandler(DataHandler dataHandler) {
+        this.dataHandler = dataHandler;
     }
 
     /**
@@ -124,9 +136,20 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
-        System.out.println("test");
+        sndBtnPress();
     }//GEN-LAST:event_btn_sendActionPerformed
 
+    private void sndBtnPress() {
+        userTextInput = txt_Text.getText();
+        userInputItterStr = txt_itterations.getText();
+        
+        if(dataHandler.userInputValid(userTextInput, userInputItterStr)) {
+            userItterationsInputInt = Integer.parseInt(userInputItterStr);
+            serverInterface.sendData(userTextInput, userItterationsInputInt);
+        } else {
+            //invalid input code
+        }
+    }
     /**
      * @param args the command line arguments
      */
